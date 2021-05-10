@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"  
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="base" template="/WEB-INF/jsp/layout.jsp">
+	    <put-attribute name="title" value="ADIDAS" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
+	</definition>
+
+	<definition name="Homepage" extends="base">
+	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/homeBody.jsp" />
+	</definition>
+	
+	<definition name="signupform" extends="base">
+	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/register.jsp" />
+	</definition>
+	
+	<definition name="signupcomplete" extends="base">
+	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/signupcomplete.jsp" />
+	</definition>
+	
+	<definition name="loginform" extends="base">
+	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
+	</definition>
+	
+	<definition name="logincomplete" extends="base">
+	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/homeBody.jsp" />
+	</definition>
+	
+	<definition name="listpage" extends="base">
+	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/listpage.jsp" />
+	</definition>
+	
+	<definition name="detailpage" extends="base">
+	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/detailpage.jsp" />
+	</definition>
+	
+	<definition name="cartpage" extends="base">
+	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/cartpage.jsp" />
+	</definition>
+	
+	<definition name="checkout" extends="base">
+	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/checkout.jsp" />
+	</definition>
+	
+	
+	
+	
+	
+</tiles-definitions>
