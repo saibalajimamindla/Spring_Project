@@ -93,11 +93,11 @@ function validatePassword(password){
 <body>
 	<div class="signup" >
 		<div class=" fields">
-			<form:form method="post" action="signup" modelAttribute="user">
+			<form:form method="post" action="signup" modelAttribute="user" >
 				<table>
 					<tr class="cells">
 						<td>Username :</td>
-						<td><form:input path="username" /></td>
+						<td><form:input  path="username" /></td>
 					</tr>
 					<tr class="cells">
 						<td>Password :</td>
@@ -105,11 +105,11 @@ function validatePassword(password){
 					</tr>
 					<tr class="cells">
 						<td>Email :</td>
-						<td><form:input path="email" onblur="validateEmail(this);"/></td>
+						<td><form:input  path="email" onblur="validateEmail(this);"/></td>
 					</tr>
 					<tr class="cells">
 						<td>PhoneNo :</td>
-						<td><form:input path="phone" onblur="validatePhoneNumber(this);" /></td>
+						<td><form:input  path="phone"  onblur="validatePhoneNumber(this); " /></td>
 					</tr>
 					<tr class="submit">
 						<td></td>

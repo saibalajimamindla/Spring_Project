@@ -1,6 +1,5 @@
 package com.Spring.Controller;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.Spring.Dao.LoginAndRegisterDaoImpl;
 import com.Spring.Model.Login;
 import com.Spring.Model.User;
+import com.Spring.Service.LoginAndRegisterService;
 
 @Controller
 public class LoginAndRegisterController {
@@ -22,6 +22,8 @@ public class LoginAndRegisterController {
 	@Autowired
 	LoginAndRegisterDaoImpl loginAndRegisterDao;
 
+	@Autowired
+	LoginAndRegisterService loginAndRegisterService;
 	
 	@RequestMapping("/signupform")
 	public ModelAndView signUpForm(HttpServletRequest request, HttpServletResponse response) {
@@ -56,13 +58,11 @@ public class LoginAndRegisterController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView login(@ModelAttribute("login") Login login, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
-		System.out.println("controller is called");
 		ModelAndView mav = null;
 
 		User user = loginAndRegisterDao.validateUser(login);
 
 		if (user != null) {
-			System.out.println("if in controller");
 			mav = new ModelAndView("logincomplete");
 
 			mav.addObject("button2", user.getUsername());
@@ -72,13 +72,9 @@ public class LoginAndRegisterController {
 			mav.addObject("button3", "Cart");
 			mav.addObject("button3adress", "cart");
 
-			Cookie ck = new Cookie("user", login.getUsername());
-			response.addCookie(ck);
-			System.out.println("printing cookie");
-			System.out.println(ck);
+			loginAndRegisterService.addCookie(login, response);
 			return mav;
 		} else {
-			System.out.println("else in controller");
 			mav = new ModelAndView("loginform");
 			mav.addObject("message", "Username or Password is wrong!!");
 		}
@@ -91,9 +87,8 @@ public class LoginAndRegisterController {
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response)
 	{
 		ModelAndView mav = new ModelAndView("Homepage");
-		Cookie ck = new Cookie("user", "");  
-        ck.setMaxAge(0);  
-        response.addCookie(ck);
+		
+		loginAndRegisterService.removeCookie(response);
         
     	mav.addObject("button1", "Login");
 		mav.addObject("button1adress", "loginform");

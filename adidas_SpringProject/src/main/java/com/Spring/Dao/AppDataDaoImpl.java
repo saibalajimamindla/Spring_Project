@@ -23,38 +23,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Spring.Model.Product;
 
 @Repository("appDataDao")
-public class AppDataDaoImpl {
+public class AppDataDaoImpl  {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	/*
-	 * HibernateTemplate template;
-	 * 
-	 * public void setTemplate(HibernateTemplate template) { this.template =
-	 * template;
-	 * 
-	 * }
-	 * 
-	 * @Transactional public void addItem() { File file = new
-	 * File("C:\\Users\\saiba\\OneDrive\\Desktop\\adidas\\sports\\s08.jpg"); byte[]
-	 * bFile = new byte[(int) file.length()];
-	 * 
-	 * try { FileInputStream fileInputStream = new FileInputStream(file); // convert
-	 * file into array of bytes fileInputStream.read(bFile);
-	 * fileInputStream.close(); } catch (Exception e) { e.printStackTrace(); }
-	 * 
-	 * Product product = new Product();
-	 * product.setName("ADIDAS ORIGINALS PHARRELL WILLIAMS SUPERSTAR SHOES");
-	 * product.setCategory("sports"); product.
-	 * setDescription("For the last half-century, the adidas Superstar shoes have had an undeniable and continuing impact on our cultural landscape. Pharrell Williams once again teams up with adidas to evolve that legacy, revamping the icon with updated materials."
-	 * ); product.setPrice(14999.99); product.setQuantity(25);
-	 * product.setImage(bFile);
-	 * 
-	 * template.save(product); System.out.println("product saved");
-	 * 
-	 * }
-	 */
 
 	@SuppressWarnings("unchecked")
 	@Transactional

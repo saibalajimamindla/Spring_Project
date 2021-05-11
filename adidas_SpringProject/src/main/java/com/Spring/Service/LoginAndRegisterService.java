@@ -2,6 +2,9 @@ package com.Spring.Service;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Service;
 
 import com.Spring.Model.Login;
@@ -39,5 +42,17 @@ public class LoginAndRegisterService {
 
 	}
 
-	
+	public void addCookie(Login login, HttpServletResponse response) {
+
+		Cookie ck = new Cookie("user", login.getUsername());
+		response.addCookie(ck);
+	}
+
+	public void removeCookie(HttpServletResponse response) {
+		Cookie ck = new Cookie("user", "");
+		ck.setMaxAge(0);
+		response.addCookie(ck);
+
+	}
+
 }

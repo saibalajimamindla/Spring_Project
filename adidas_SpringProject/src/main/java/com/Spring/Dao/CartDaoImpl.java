@@ -14,7 +14,7 @@ import com.Spring.Model.Product;
 import com.Spring.Service.CartService;
 
 @Repository("cartDao")
-public class CartDaoImpl {
+public class CartDaoImpl  {
 
 	@Autowired
 	private SessionFactory sessionFactory;
