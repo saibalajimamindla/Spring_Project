@@ -14,7 +14,7 @@ import com.Spring.Model.User;
 import com.Spring.Service.LoginAndRegisterService;
 
 @Repository("loginAndRegisterDao")
-public class LoginAndRegisterDaoImpl   {
+public class LoginAndRegisterDaoImpl implements LoginAndRegisterDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;

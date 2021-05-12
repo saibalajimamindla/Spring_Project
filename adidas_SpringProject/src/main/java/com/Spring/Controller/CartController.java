@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.Spring.Dao.CartDaoImpl;
+import com.Spring.Dao.CartDao;
+
 import com.Spring.Model.Cart;
 import com.Spring.Service.CartService;
 
@@ -19,7 +20,7 @@ import com.Spring.Service.CartService;
 public class CartController {
 
 	@Autowired
-	CartDaoImpl cartDao;
+	CartDao cartDao;
 
 	@Autowired
 	CartService cartService;

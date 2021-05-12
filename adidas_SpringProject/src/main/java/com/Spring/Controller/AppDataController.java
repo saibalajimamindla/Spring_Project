@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.Spring.Dao.AppDataDaoImpl;
+import com.Spring.Dao.AppDataDao;
 import com.Spring.Model.Product;
 import com.Spring.Service.AppDataService;
 
@@ -24,7 +24,7 @@ import com.Spring.Service.AppDataService;
 public class AppDataController {
 
 	@Autowired
-	AppDataDaoImpl appDataDao;
+	AppDataDao appDataDao;
 
 	@Autowired
 	AppDataService appDataService;

@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Spring.Model.Product;
 
 @Repository("appDataDao")
-public class AppDataDaoImpl  {
+public class AppDataDaoImpl implements AppDataDao{
 
 	@Autowired
 	private SessionFactory sessionFactory;

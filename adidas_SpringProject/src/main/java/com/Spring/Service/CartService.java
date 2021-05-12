@@ -10,8 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.Spring.Dao.AppDataDaoImpl;
-import com.Spring.Dao.CartDaoImpl;
+import com.Spring.Dao.AppDataDao;
+
+import com.Spring.Dao.CartDao;
 import com.Spring.Model.Cart;
 import com.Spring.Model.Orders;
 import com.Spring.Model.Product;
@@ -20,10 +21,10 @@ import com.Spring.Model.Product;
 public class CartService {
 
 	@Autowired
-	CartDaoImpl cartDao;
+	CartDao cartDao;
 
 	@Autowired
-	AppDataDaoImpl appDataDao;
+	AppDataDao appDataDao;
 
 	public Product getProduct(List<Product> products) {
 		Product product = products.get(0);

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.Spring.Dao.LoginAndRegisterDaoImpl;
+import com.Spring.Dao.LoginAndRegisterDao;
 import com.Spring.Model.Login;
 import com.Spring.Model.User;
 import com.Spring.Service.LoginAndRegisterService;
@@ -20,7 +20,7 @@ import com.Spring.Service.LoginAndRegisterService;
 public class LoginAndRegisterController {
 
 	@Autowired
-	LoginAndRegisterDaoImpl loginAndRegisterDao;
+	LoginAndRegisterDao loginAndRegisterDao;
 
 	@Autowired
 	LoginAndRegisterService loginAndRegisterService;
