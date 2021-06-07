@@ -61,31 +61,6 @@
 	<bean id="passwordencoder"
 		class="org.springframework.security.crypto.password.NoOpPasswordEncoder"></bean>
 
-	<bean id="loginandregisterdao"
-		class="com.Spring.Dao.LoginAndRegisterDaoImpl">
-
-	</bean>
-
-	<bean id="appdatadao" class="com.Spring.Dao.AppDataDaoImpl">
-
-	</bean>
-
-	<bean id="cartdao" class="com.Spring.Dao.CartDaoImpl">
-
-	</bean>
-
-	<bean id="loginAndRegisterService"
-		class="com.Spring.Service.LoginAndRegisterService">
-	</bean>
-
-	<bean id="appDataService"
-		class="com.Spring.Service.AppDataService">
-	</bean>
-	
-	<bean id="cartService"
-		class="com.Spring.Service.CartService">
-	</bean>
-
 	<bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"

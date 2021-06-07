@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Spring.Dao.LoginAndRegisterDao;
-import com.Spring.Model.Login;
 import com.Spring.Model.User;
 import com.Spring.Service.LoginAndRegisterService;
 
@@ -49,7 +48,6 @@ public class LoginAndRegisterController {
 	@RequestMapping("/loginform")
 	public ModelAndView loginForm(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView("loginform");
-		mav.addObject("login", new Login());
 		return mav;
 
 	}

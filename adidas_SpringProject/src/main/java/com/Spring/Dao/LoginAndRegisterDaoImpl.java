@@ -38,17 +38,4 @@ public class LoginAndRegisterDaoImpl implements LoginAndRegisterDao {
 
 	}
 
-	/*
-	 * @SuppressWarnings("unchecked")
-	 * 
-	 * @Transactional public User validateUser(Login login) { Session session =
-	 * this.sessionFactory.getCurrentSession(); String hql =
-	 * "from User user where user.username ='" + login.getUsername() + "'";
-	 * List<User> results = session.createQuery(hql).list();
-	 * 
-	 * return loginAndRegisterService.checkUser(results, login);
-	 * 
-	 * }
-	 */
-
 }

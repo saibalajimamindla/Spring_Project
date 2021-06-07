@@ -77,6 +77,7 @@ background-color: black;
             You have been logged out.  
         </p>  
     </c:if>  
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</form:form>
 		</div>
 	</div>
