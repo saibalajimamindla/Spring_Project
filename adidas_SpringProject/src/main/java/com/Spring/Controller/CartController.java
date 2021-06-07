@@ -25,12 +25,11 @@ public class CartController {
 	@Autowired
 	CartService cartService;
 
-	@RequestMapping("/addtocart/{productCode}")
-	public String addItem(HttpServletRequest request, HttpServletResponse response,
-			@PathVariable String productCode) {
-		cartService.addTocart(productCode);
+	@RequestMapping("/addtocart/{productCode}/{category}")
+	public String addItem(HttpServletRequest request, HttpServletResponse response, @PathVariable String productCode,
+			@PathVariable String category) {
+		cartService.addTocart(productCode, cartService.currentUser(request));
 		
-
 		return "redirect:/cart";
 	}
 
@@ -38,40 +37,47 @@ public class CartController {
 	public ModelAndView viewCart(HttpServletRequest request, HttpServletResponse response) {
 
 		ModelAndView mav = new ModelAndView("cartpage");
-		List<Cart> cartItems = cartDao.getCartItems();
-		if(!cartItems.isEmpty())
-		{
+		List<Cart> cartItems = cartDao.getCartItems(cartService.currentUser(request));
+		if (!cartItems.isEmpty()) {
 			mav.addObject("items", cartItems);
-			mav =cartService.cartTotal(mav);
-		}else
-		{
+			mav = cartService.cartTotal(mav);
+		} else {
 			mav.addObject("message", "Cart is Empty");
 		}
-		
-		
+
 		mav = cartService.checkLoginSatatus(request, mav);
-		
-		
+
 		return mav;
-		
+
 	}
-	
+
 	@RequestMapping("remove/{productCode}")
-	public String removeFromCart(HttpServletRequest request, HttpServletResponse response,@PathVariable String productCode)
-	{
-		
-		cartService.removeCartItem(productCode);
-		
+	public String removeFromCart(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable String productCode) {
+
+		cartService.removeCartItem(productCode,request);
+
 		return "redirect:/cart";
-		
+
 	}
-	
+
 	@RequestMapping("/checkout")
-	public ModelAndView requestCheckout(HttpServletRequest request, HttpServletResponse response)
-	{
-		ModelAndView mav = new ModelAndView("checkout");
-		mav = cartService.checkLoginSatatus(request, mav);
-		cartService.checkout(request);
+	public ModelAndView Checkout(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav;
+		if (cartDao.getCartItems(cartService.currentUser(request)).isEmpty()) {
+			mav = new ModelAndView("emptycart");
+		} else {
+			if (cartService.currentUser(request) != null) {
+				mav = new ModelAndView("checkout");
+				mav = cartService.checkLoginSatatus(request, mav);
+				cartService.checkout(request);
+			} else {
+				mav = new ModelAndView("checkoutlogin");
+				mav = cartService.checkLoginSatatus(request, mav);
+			}
+
+		}
+
 		return mav;
 	}
 

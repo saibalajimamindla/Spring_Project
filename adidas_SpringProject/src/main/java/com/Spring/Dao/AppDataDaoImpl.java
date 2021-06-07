@@ -23,11 +23,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Spring.Model.Product;
 
 @Repository("appDataDao")
-public class AppDataDaoImpl implements AppDataDao{
+public class AppDataDaoImpl implements AppDataDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-
 
 	@SuppressWarnings("unchecked")
 	@Transactional
@@ -36,11 +35,9 @@ public class AppDataDaoImpl implements AppDataDao{
 		Session session = this.sessionFactory.getCurrentSession();
 		String hql = "from Product product where product.category ='" + category + "'";
 		List<Product> productList = session.createQuery(hql).list();
-		System.out.println("query executed");
 		for (Product product : productList) {
-			
-			if(product.getBase64Image()==null)
-			{
+
+			if (product.getBase64Image() == null) {
 				byte[] image = product.getImage();
 				Blob blob = new SerialBlob(image);
 
@@ -59,37 +56,32 @@ public class AppDataDaoImpl implements AppDataDao{
 				inputStream.close();
 				outputStream.close();
 
-				System.out.println("query executed1");
 				product.setBase64Image(base64Image);
-				System.out.println("query executed2");
 			}
-			
+
 		}
 		return productList;
 
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public Product getProductDetails(String productCode)
-	{
-		System.out.println("detail dao is called");
+	public Product getProductDetails(String productCode) {
+
 		Session session = this.sessionFactory.getCurrentSession();
-		System.out.println("session is created");
-		String hql = "from Product product where product.productCode ='" +productCode+"'" ;
+		String hql = "from Product product where product.productCode ='" + productCode + "'";
 		List<Product> productData = session.createQuery(hql).list();
-		Product product = productData. get(0);
-		
+		Product product = productData.get(0);
+
 		return product;
-		
+
 	}
-	
+
 	@Transactional
-	public void updateProduct(Product product)
-	{
+	public void updateProduct(Product product) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(product);
-		
+
 	}
 
 }

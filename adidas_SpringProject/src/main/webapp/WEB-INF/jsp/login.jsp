@@ -50,25 +50,33 @@ background-color: black;
 <body>
 	<div class="login" >
 		<div class=" fields">
-			<form:form method="post" action="login" modelAttribute="login">
+			<form:form>
+			
 				<table>
 					<tr class="cells">
-						<td>Username :</td>
-						<td><form:input path="username" /></td>
+						<td>Username : <input type="text" name="username"></td>
+						
 					</tr>
 					<tr class="cells">
-						<td>Password :</td>
-						<td><form:password  path="password" /></td>
+						<td>Password :<input type="text" name="password"></td>
+				
 					</tr>
 				
 					<tr class="submit">
 						<td></td>
 						<td><input type="submit" value="Login"/></td>
 					</tr>
-					<tr>
-						<td style="font-style: italic; color: red; font-size: small; ">${message}</td>
-					</tr>
 				</table>
+				<c:if test="${param.error != null}">          
+        <p>  
+            Invalid username and password.  
+        </p>  
+    </c:if>  
+    <c:if test="${param.logout != null}">         
+        <p>  
+            You have been logged out.  
+        </p>  
+    </c:if>  
 			</form:form>
 		</div>
 	</div>

@@ -50,13 +50,19 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/cartpage.jsp" />
 	</definition>
 	
+	<definition name="emptycart" extends="base">
+	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/emptycart.jsp" />
+	</definition>
+	
+	<definition name="checkoutlogin" extends="base">
+	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/checkoutlogin.jsp" />
+	</definition>
+	
 	<definition name="checkout" extends="base">
 	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
 		<put-attribute name="body" value="/WEB-INF/jsp/checkout.jsp" />
 	</definition>
-	
-	
-	
-	
 	
 </tiles-definitions>

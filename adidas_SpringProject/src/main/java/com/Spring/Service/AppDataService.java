@@ -1,54 +1,44 @@
 package com.Spring.Service;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 @Service("appDataService")
 public class AppDataService {
 
-	public ModelAndView checkLoginSatatus(HttpServletRequest request,ModelAndView mav) {
-		Cookie ck[] = request.getCookies();
-		String cookieName = "user";
-		String value = null;
 
-		if (ck != null) {
+	public ModelAndView checkLoginSatatus(HttpServletRequest request, ModelAndView mav) {
+		String username;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-			for (int i = 0; i < ck.length; i++) {
-				Cookie cookie = ck[i];
-				if (cookieName.equals(cookie.getName())) {
-					value = cookie.getValue();
-				}
-			}
-
+		if (principal instanceof UserDetails) {
+			username = ((UserDetails) principal).getUsername();
 		} else {
-
-			value = null;
+			username = principal.toString();
 		}
 
-		if (value == null || value == "") {
+		if (username.equals("anonymousUser")) {
 
 			mav.addObject("button1", "Login");
 			mav.addObject("button1adress", "loginform");
 			mav.addObject("button2", "Sign-Up");
 			mav.addObject("button2adress", "signupform");
+			mav.addObject("button3", "Cart");
+			mav.addObject("button3adress", "cart");
 		} else {
 
-			mav.addObject("button2", value);
+			mav.addObject("button2", username);
 			mav.addObject("button2adress", "#");
 			mav.addObject("button1", "Logout");
 			mav.addObject("button1adress", "logout");
 			mav.addObject("button3", "Cart");
 			mav.addObject("button3adress", "cart");
 		}
-		
-		
-		return mav;
-	
 
+		return mav;
 
 	}
-
 }

@@ -34,7 +34,7 @@ public class AppDataController {
 		ModelAndView mav = new ModelAndView("Homepage");
 
 		mav = appDataService.checkLoginSatatus(request, mav);
-
+		
 		return mav;
 	}
 
@@ -45,7 +45,7 @@ public class AppDataController {
 		ModelAndView mav = new ModelAndView("listpage");
 		mav.addObject("listProducts", products);
 		mav = appDataService.checkLoginSatatus(request, mav);
-
+	
 		return mav;
 
 	}

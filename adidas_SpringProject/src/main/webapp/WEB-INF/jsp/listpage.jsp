@@ -70,7 +70,7 @@
 
 					</tr>
 					<tr>
-						<td id="button"><a href="${pageContext.request.contextPath}/addtocart/${product.productCode}">Add To Cart</a></td>
+						<td id="button"><a href="${pageContext.request.contextPath}/addtocart/${product.productCode}/${product.category}">Add To Cart</a></td>
 					</tr>
 
 				</table>

@@ -75,12 +75,12 @@
 	width: 60%;
 }
 
-.description p{
-padding-left: 50px;
+.description p {
+	padding-left: 50px;
 }
 
-.description h3{
-padding-left: 50px;
+.description h3 {
+	padding-left: 50px;
 }
 </style>
 </head>
@@ -98,8 +98,9 @@ padding-left: 50px;
 					<p class="stockunits">
 						No.of units left:<a>${productDetails.quantity}</a>
 					</p> <br> <br> <br> <a class="cartbutton"
-					href="${pageContext.request.contextPath}/addtocart/${productDetails.productCode}">ADD TO CART </a> <br>
-                    <p>${cartupdatestatus}</p>
+					href="${pageContext.request.contextPath}/addtocart/${productDetails.productCode}/${product.category}">ADD
+						TO CART </a> <br>
+
 				</td>
 			</tr>
 		</table>

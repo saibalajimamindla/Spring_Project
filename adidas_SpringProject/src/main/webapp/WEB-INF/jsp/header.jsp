@@ -41,7 +41,7 @@ body {
 	font-size: large;
 }
 
-.header-right a {
+.header-right {
 	float: right;
 	margin-top: 10px;
 	font-size: large;
@@ -67,15 +67,23 @@ body {
 				src="https://www.searchpng.com/wp-content/uploads/2019/01/Adidas-Logo-White-PNG.png"
 				alt="Italian Trulli" width="50"></a>
 			<div class="header-left">
-				<a class="active" href="${pageContext.request.contextPath}/requestplp/men">MEN</a> <a
-					href="${pageContext.request.contextPath}/requestplp/women">WOMEN</a> <a href="${pageContext.request.contextPath}/requestplp/kids">KIDS</a>
+				<a class="active"
+					href="${pageContext.request.contextPath}/requestplp/men">MEN</a> <a
+					href="${pageContext.request.contextPath}/requestplp/women">WOMEN</a>
+				<a href="${pageContext.request.contextPath}/requestplp/kids">KIDS</a>
 				<a href="${pageContext.request.contextPath}/requestplp/sports">SPORTS</a>
-			
+
 
 			</div>
 			<div class="header-right">
-				<a href="${pageContext.request.contextPath}/${button1adress}">${button1}</a> <a href="${pageContext.request.contextPath}/${button2adress}">${button2}</a>
+				<%-- <a href="${pageContext.request.contextPath}/${button1adress}">${button1}</a> --%>
+				<a href="${pageContext.request.contextPath}/${button2adress}">${button2}</a>
 				<a href="${pageContext.request.contextPath}/${button3adress}">${button3}</a>
+				<form action="${pageContext.request.contextPath}/${button1adress}" method="post">
+					<input type="submit" value="${button1}"
+						style="background-color: Transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden; color:white; font-size: large; font-weight: bolder; font-size: large;margin-top: 25px;">
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				</form>
 			</div>
 		</div>
 	</header>

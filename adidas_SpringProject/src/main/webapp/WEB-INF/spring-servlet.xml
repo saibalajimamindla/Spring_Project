@@ -17,7 +17,7 @@
 	<context:annotation-config></context:annotation-config>
 
 	<context:component-scan
-		base-package="com.Spring.Controller"></context:component-scan>
+		base-package="com.Spring"></context:component-scan>
 
 
 	<bean id="datasource"
@@ -57,12 +57,9 @@
 		<property name="sessionFactory" ref="sessionfactory"></property>
 
 	</bean>
-
-	<bean id="hibernatetemplate"
-		class="org.springframework.orm.hibernate5.HibernateTemplate">
-		<property name="sessionFactory" ref="sessionfactory"></property>
-		<property name="checkWriteOperations" value="false"></property>
-	</bean>
+	
+	<bean id="passwordencoder"
+		class="org.springframework.security.crypto.password.NoOpPasswordEncoder"></bean>
 
 	<bean id="loginandregisterdao"
 		class="com.Spring.Dao.LoginAndRegisterDaoImpl">

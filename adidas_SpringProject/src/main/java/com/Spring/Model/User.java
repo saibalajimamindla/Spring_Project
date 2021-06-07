@@ -15,6 +15,8 @@ public class User {
 	private String password;
 	private String email;
 	private String  phone;
+	private String roles;
+	private int enabled;
 
 	public User() {
 		super();
@@ -58,6 +60,22 @@ public class User {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
+
+	public int getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
 	}
 
 	@Override

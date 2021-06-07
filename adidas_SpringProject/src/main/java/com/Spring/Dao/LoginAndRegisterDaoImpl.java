@@ -5,11 +5,8 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-/*import org.springframework.orm.hibernate5.HibernateTemplate;*/
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.Spring.Model.Login;
 import com.Spring.Model.User;
 import com.Spring.Service.LoginAndRegisterService;
 
@@ -30,8 +27,8 @@ public class LoginAndRegisterDaoImpl implements LoginAndRegisterDao {
 		List<User> results = session.createQuery(hql).list();
 
 		if (results.isEmpty()) {
-
-			return (int) session.save(user);
+			session.save(user);
+			return 1;
 
 		} else {
 
@@ -41,15 +38,17 @@ public class LoginAndRegisterDaoImpl implements LoginAndRegisterDao {
 
 	}
 
-	@SuppressWarnings("unchecked")
-	@Transactional
-	public User validateUser(Login login) {
-		Session session = this.sessionFactory.getCurrentSession();
-		String hql = "from User user where user.username ='" + login.getUsername() + "'";
-		List<User> results = session.createQuery(hql).list();
-
-		return loginAndRegisterService.checkUser(results, login);
-
-	}
+	/*
+	 * @SuppressWarnings("unchecked")
+	 * 
+	 * @Transactional public User validateUser(Login login) { Session session =
+	 * this.sessionFactory.getCurrentSession(); String hql =
+	 * "from User user where user.username ='" + login.getUsername() + "'";
+	 * List<User> results = session.createQuery(hql).list();
+	 * 
+	 * return loginAndRegisterService.checkUser(results, login);
+	 * 
+	 * }
+	 */
 
 }

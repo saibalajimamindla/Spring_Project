@@ -10,11 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Spring.Model.Cart;
 import com.Spring.Model.Orders;
-import com.Spring.Model.Product;
 import com.Spring.Service.CartService;
 
 @Repository("cartDao")
-public class CartDaoImpl implements CartDao{
+public class CartDaoImpl implements CartDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -23,10 +22,10 @@ public class CartDaoImpl implements CartDao{
 
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public Product addItemToCart(String productCode) {
+	public void addItemToCart(String productCode,String user) {
 		Session session = this.sessionFactory.getCurrentSession();
 
-		String checkCart = "from Cart cart where cart.productCode='" + productCode + "'";
+		String checkCart = "from Cart cart where cart.productCode='" + productCode + "'"+"and user='"+user+"'";
 		List<Cart> results = session.createQuery(checkCart).list();
 
 		if (results.isEmpty()) {
@@ -34,24 +33,18 @@ public class CartDaoImpl implements CartDao{
 					+ "SELECT p.productCode, p.name, p.price, p.base64Image  FROM Product p WHERE productCode = '"
 					+ productCode + "'";
 			session.createQuery(insert).executeUpdate();
-			String query = "from Product product where product.productCode ='" + productCode + "'";
-			List<Product> productData = session.createQuery(query).list();
-			return cartService.getProduct(productData);
+			String setUser="update Cart set user='"+user+"'"+" WHERE productCode = '"+ productCode +"'";
+			session.createQuery(setUser).executeUpdate();
 
-		} else {
-
-			String query = "from Product product where product.productCode ='" + productCode + "'";
-			List<Product> productData = session.createQuery(query).list();
-			return cartService.getProduct(productData);
 		}
 
 	}
 
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<Cart> getCartItems() {
+	public List<Cart> getCartItems(String user) {
 		Session session = this.sessionFactory.getCurrentSession();
-		String hql = "FROM Cart";
+		String hql = "FROM Cart cart WHERE cart.user='"+user+"'";
 		List<Cart> results = session.createQuery(hql).list();
 		return results;
 
@@ -68,18 +61,17 @@ public class CartDaoImpl implements CartDao{
 	}
 
 	@Transactional
-	public void removeItem(String productCode) {
+	public void removeItem(String productCode,String user) {
 		Session session = this.sessionFactory.getCurrentSession();
-		String hql = "delete from Cart where productCode ='" + productCode + "'";
+		String hql = "delete from Cart cart where cart.productCode ='" + productCode + "'"+"and user='"+user+"'";
 		session.createQuery(hql).executeUpdate();
 	}
-	
+
 	@Transactional
-	public void addItemToOrders(Orders order)
-	{
+	public void addItemToOrders(Orders order) {
 		Session session = this.sessionFactory.getCurrentSession();
-	    session.save(order);
-		
+		session.save(order);
+
 	}
 
 }
