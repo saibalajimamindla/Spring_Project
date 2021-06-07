@@ -34,6 +34,7 @@ public class AppDataController {
 		ModelAndView mav = new ModelAndView("Homepage");
 
 		mav = appDataService.checkLoginSatatus(request, mav);
+		mav=appDataService.addHeaderButtons(mav);
 		
 		return mav;
 	}
@@ -45,6 +46,7 @@ public class AppDataController {
 		ModelAndView mav = new ModelAndView("listpage");
 		mav.addObject("listProducts", products);
 		mav = appDataService.checkLoginSatatus(request, mav);
+		mav=appDataService.addHeaderButtons(mav);
 	
 		return mav;
 
@@ -58,6 +60,7 @@ public class AppDataController {
 		ModelAndView mav = new ModelAndView("detailpage");
 		mav.addObject("productDetails", product);
 		mav = appDataService.checkLoginSatatus(request, mav);
+		mav=appDataService.addHeaderButtons(mav);
 
 		return mav;
 

@@ -73,5 +73,15 @@ public class CartDaoImpl implements CartDao {
 		session.save(order);
 
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<String> getCategories() {
+		Session session = this.sessionFactory.getCurrentSession();
+		String hql = "SELECT DISTINCT(category) FROM Product";
+		List<String> categories = session.createQuery(hql).list();
+		return categories;
+	}
 
 }

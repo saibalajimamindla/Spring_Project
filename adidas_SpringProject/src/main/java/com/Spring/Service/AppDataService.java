@@ -1,13 +1,20 @@
 package com.Spring.Service;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.Spring.Dao.AppDataDao;
+
 @Service("appDataService")
 public class AppDataService {
+	
+	@Autowired
+	AppDataDao appDataDao;
 
 
 	public ModelAndView checkLoginSatatus(HttpServletRequest request, ModelAndView mav) {
@@ -41,4 +48,12 @@ public class AppDataService {
 		return mav;
 
 	}
+	
+	public ModelAndView addHeaderButtons( ModelAndView mav){
+		
+		mav.addObject("categoryList",appDataDao.getCategories());
+		return mav;
+		
+	}
+	
 }

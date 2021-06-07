@@ -45,6 +45,8 @@ public class CartController {
 		}
 
 		mav = cartService.checkLoginSatatus(request, mav);
+		mav=cartService.addHeaderButtons(mav);
+		
 
 		return mav;
 
@@ -69,6 +71,7 @@ public class CartController {
 
 			mav = new ModelAndView("checkout");
 			mav = cartService.checkLoginSatatus(request, mav);
+			mav=cartService.addHeaderButtons(mav);
 			cartService.checkout(request);
 
 		}

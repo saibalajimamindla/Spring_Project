@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +56,7 @@ body {
 }
 
 .header a.active {
-	margin-left: 50px;
+	margin-left: 20px;
 }
 </style>
 </head>
@@ -67,16 +68,13 @@ body {
 				src="https://www.searchpng.com/wp-content/uploads/2019/01/Adidas-Logo-White-PNG.png"
 				alt="Italian Trulli" width="50"></a>
 			<div class="header-left">
-				<a class="active"
-					href="${pageContext.request.contextPath}/requestplp/men">MEN</a> <a
-					href="${pageContext.request.contextPath}/requestplp/women">WOMEN</a>
-				<a href="${pageContext.request.contextPath}/requestplp/kids">KIDS</a>
-				<a href="${pageContext.request.contextPath}/requestplp/sports">SPORTS</a>
-
-
+		<c:forEach var="category" items="${categoryList}">
+		<a class="active" href="${pageContext.request.contextPath}/requestplp/${category}">${category}</a>
+		
+		</c:forEach>
+			
 			</div>
 			<div class="header-right">
-				<%-- <a href="${pageContext.request.contextPath}/${button1adress}">${button1}</a> --%>
 				<a href="${pageContext.request.contextPath}/${button2adress}">${button2}</a>
 				<a href="${pageContext.request.contextPath}/${button3adress}">${button3}</a>
 				<form action="${button1adress}" method="post">

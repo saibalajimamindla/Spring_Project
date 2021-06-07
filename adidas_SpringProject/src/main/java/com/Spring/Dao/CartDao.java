@@ -11,5 +11,6 @@ public interface CartDao {
 	public double cartTotal();
 	public List<Cart> getCartItems(String user);
 	public void addItemToCart(String productCode,String user);
+	public List<String> getCategories();
 
 }

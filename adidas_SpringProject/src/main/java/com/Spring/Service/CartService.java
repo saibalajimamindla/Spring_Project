@@ -132,5 +132,12 @@ public class CartService {
 		}
 
 	}
+	
+public ModelAndView addHeaderButtons( ModelAndView mav){
+		
+		mav.addObject("categoryList",cartDao.getCategories());
+		return mav;
+		
+	}
 
 }

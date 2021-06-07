@@ -12,5 +12,6 @@ public interface AppDataDao {
 	public void updateProduct(Product product);
 	public Product getProductDetails(String productCode);
 	public List<Product> getProducts(String category) throws SerialException, SQLException, IOException;
+	public List<String> getCategories();
 
 }
