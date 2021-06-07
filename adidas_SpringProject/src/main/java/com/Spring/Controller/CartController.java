@@ -25,11 +25,10 @@ public class CartController {
 	@Autowired
 	CartService cartService;
 
-	@RequestMapping("/addtocart/{productCode}/{category}")
-	public String addItem(HttpServletRequest request, HttpServletResponse response, @PathVariable String productCode,
-			@PathVariable String category) {
+	@RequestMapping("/addtocart/{productCode}")
+	public String addItem(HttpServletRequest request, HttpServletResponse response, @PathVariable String productCode) {
 		cartService.addTocart(productCode, cartService.currentUser(request));
-		
+
 		return "redirect:/cart";
 	}
 
@@ -55,7 +54,7 @@ public class CartController {
 	public String removeFromCart(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable String productCode) {
 
-		cartService.removeCartItem(productCode,request);
+		cartService.removeCartItem(productCode, request);
 
 		return "redirect:/cart";
 
@@ -63,18 +62,14 @@ public class CartController {
 
 	@RequestMapping("/checkout")
 	public ModelAndView Checkout(HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView mav;
+		ModelAndView mav = null;
 		if (cartDao.getCartItems(cartService.currentUser(request)).isEmpty()) {
 			mav = new ModelAndView("emptycart");
 		} else {
-			if (cartService.currentUser(request) != null) {
-				mav = new ModelAndView("checkout");
-				mav = cartService.checkLoginSatatus(request, mav);
-				cartService.checkout(request);
-			} else {
-				mav = new ModelAndView("checkoutlogin");
-				mav = cartService.checkLoginSatatus(request, mav);
-			}
+
+			mav = new ModelAndView("checkout");
+			mav = cartService.checkLoginSatatus(request, mav);
+			cartService.checkout(request);
 
 		}
 

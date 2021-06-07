@@ -98,7 +98,7 @@
 					<p class="stockunits">
 						No.of units left:<a>${productDetails.quantity}</a>
 					</p> <br> <br> <br> <a class="cartbutton"
-					href="${pageContext.request.contextPath}/addtocart/${productDetails.productCode}/${product.category}">ADD
+					href="${pageContext.request.contextPath}/addtocart/${productDetails.productCode}">ADD
 						TO CART </a> <br>
 
 				</td>

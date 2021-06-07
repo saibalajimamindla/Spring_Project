@@ -23,7 +23,7 @@ public class AppDataService {
 		if (username.equals("anonymousUser")) {
 
 			mav.addObject("button1", "Login");
-			mav.addObject("button1adress", "loginform");
+			mav.addObject("button1adress","loginform");
 			mav.addObject("button2", "Sign-Up");
 			mav.addObject("button2adress", "signupform");
 			mav.addObject("button3", "Cart");

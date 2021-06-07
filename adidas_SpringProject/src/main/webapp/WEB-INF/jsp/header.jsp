@@ -79,7 +79,7 @@ body {
 				<%-- <a href="${pageContext.request.contextPath}/${button1adress}">${button1}</a> --%>
 				<a href="${pageContext.request.contextPath}/${button2adress}">${button2}</a>
 				<a href="${pageContext.request.contextPath}/${button3adress}">${button3}</a>
-				<form action="${pageContext.request.contextPath}/${button1adress}" method="post">
+				<form action="${button1adress}" method="post">
 					<input type="submit" value="${button1}"
 						style="background-color: Transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden; color:white; font-size: large; font-weight: bolder; font-size: large;margin-top: 25px;">
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

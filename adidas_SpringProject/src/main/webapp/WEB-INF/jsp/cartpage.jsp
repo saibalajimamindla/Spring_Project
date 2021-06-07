@@ -130,8 +130,12 @@ margin-left: 550px;
 			</tr>
 			<tr>
 				<td></td>
+				<c:if test="${carttotal != 0}">      
 				<td><a href="${pageContext.request.contextPath}/checkout"
 					class="checkout">Checkout &#10143;</a></td>
+				
+				</c:if>
+				
 			</tr>
 		</table>
 
