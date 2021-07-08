@@ -28,6 +28,7 @@
 		<property name="username" value="root"></property>
 		<property name="password" value="1qaz@WSX"></property>
 	</bean>
+	
 
 	<bean id="sessionfactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
@@ -58,8 +59,9 @@
 
 	</bean>
 	
-	<bean id="passwordencoder"
-		class="org.springframework.security.crypto.password.NoOpPasswordEncoder"></bean>
+	
+	<bean id="passwordencoder" class="org.springframework.security.crypto.password.NoOpPasswordEncoder"></bean>
+
 
 	<bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">

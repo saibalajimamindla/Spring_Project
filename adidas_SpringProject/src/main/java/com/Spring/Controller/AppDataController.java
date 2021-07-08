@@ -1,7 +1,6 @@
 package com.Spring.Controller;
 
 import java.io.IOException;
-
 import java.sql.SQLException;
 
 import java.util.List;
@@ -32,8 +31,6 @@ public class AppDataController {
 	@RequestMapping("/homepage")
 	public ModelAndView homePage(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView("Homepage");
-
-		mav = appDataService.checkLoginSatatus(request, mav);
 		mav=appDataService.addHeaderButtons(mav);
 		
 		return mav;
@@ -45,7 +42,7 @@ public class AppDataController {
 		List<Product> products = appDataDao.getProducts(category);
 		ModelAndView mav = new ModelAndView("listpage");
 		mav.addObject("listProducts", products);
-		mav = appDataService.checkLoginSatatus(request, mav);
+		/* mav = appDataService.checkLoginSatatus(request, mav); */
 		mav=appDataService.addHeaderButtons(mav);
 	
 		return mav;
@@ -59,7 +56,7 @@ public class AppDataController {
 		Product product = appDataDao.getProductDetails(productCode);
 		ModelAndView mav = new ModelAndView("detailpage");
 		mav.addObject("productDetails", product);
-		mav = appDataService.checkLoginSatatus(request, mav);
+		/* mav = appDataService.checkLoginSatatus(request, mav); */
 		mav=appDataService.addHeaderButtons(mav);
 
 		return mav;

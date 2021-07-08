@@ -43,8 +43,6 @@ public class CartController {
 		} else {
 			mav.addObject("message", "Cart is Empty");
 		}
-
-		mav = cartService.checkLoginSatatus(request, mav);
 		mav=cartService.addHeaderButtons(mav);
 		
 
@@ -70,7 +68,6 @@ public class CartController {
 		} else {
 
 			mav = new ModelAndView("checkout");
-			mav = cartService.checkLoginSatatus(request, mav);
 			mav=cartService.addHeaderButtons(mav);
 			cartService.checkout(request);
 

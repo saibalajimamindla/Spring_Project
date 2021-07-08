@@ -1,6 +1,5 @@
 package com.Spring.Service;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,8 +15,9 @@ public class AppDataService {
 	@Autowired
 	AppDataDao appDataDao;
 
-
-	public ModelAndView checkLoginSatatus(HttpServletRequest request, ModelAndView mav) {
+	public ModelAndView addHeaderButtons( ModelAndView mav){
+		
+		mav.addObject("categoryList",appDataDao.getCategories());
 		String username;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -44,14 +44,6 @@ public class AppDataService {
 			mav.addObject("button3", "Cart");
 			mav.addObject("button3adress", "cart");
 		}
-
-		return mav;
-
-	}
-	
-	public ModelAndView addHeaderButtons( ModelAndView mav){
-		
-		mav.addObject("categoryList",appDataDao.getCategories());
 		return mav;
 		
 	}
